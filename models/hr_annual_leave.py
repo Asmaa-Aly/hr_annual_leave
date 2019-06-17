@@ -28,6 +28,8 @@ from openerp.exceptions import except_orm, Warning, RedirectWarning
 from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
+#Test
+
 class hr_annual_leave(models.Model):
 	_name = "hr.annual.leave"
 	_description ="Annual leave"
