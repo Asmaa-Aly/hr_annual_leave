@@ -23,6 +23,8 @@
 	'version' : '0.1',
 	'author' : 'Asmaa Aly',
 	'category' : 'Human Resources',
+	'price': 30,
+	'currency':"USD",
 	'description' : """
 	The purpose of this module is to manage Annual Leave for all employee or for each department through odoo 8 annual leave Module as HR new feature. 
 	Integrated with Holidays Management
