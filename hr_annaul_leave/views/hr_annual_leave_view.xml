@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		<!--Annual Leave Tree-->
+		<record id="tree_hr_annual_leave_view" model="ir.ui.view">
+			<field name="name">hr.annual.leave.tree</field>
+			<field name="model">hr.annual.leave</field>
+			<field name="arch" type="xml">
+				<tree string="Annual Leave">
+					<field name="name"/>
+					<field name="start_date"/>
+					<field name="end_date"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+		
+		<!--Annual Leave Form-->
+		<record id="view_hr_annual_leave_form" model="ir.ui.view">
+			<field name="name">hr.annual.leave.form</field>
+			<field name="model">hr.annual.leave</field>
+			<field name="arch" type="xml">
+				<form string="Annual Leave">
+					<header>
+						<button name="apply_annual_leave" type="object" string="Apply" states="draft"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+					</header>
+					<sheet>
+						<group col="4">
+							<field name="name" placeholder="Year 2015" style="width: 20em" attrs="{'readonly':[('state','=','confirm')]}"/>
+							<field name="department_ids" attrs="{'readonly':[('state','=','confirm')]}" widget="many2many_tags"/>
+							<field name="start_date" attrs="{'readonly':[('state','=','confirm')]}"/>
+							<field name="end_date" attrs="{'readonly':[('state','=','confirm')]}"/>
+						</group>
+						<notebook>
+							<page string="Leave Days">
+								<field name="leave_days_ids" attrs="{'readonly':[('state','=','confirm')]}">
+									<tree string="Annual Leave Days" editable="bottom">
+										<field name="name"/>
+										<field name="date_of_day" on_change="onchange_date_of_day(date_of_day)"/>
+										<field name="day_of_week"/>
+										<field name="event"/>
+										<button name="delete_leave_day" icon="gtk-clear" string="Delete Leave" type="object"/>
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record id="action_hr_annual_leave" model="ir.actions.act_window">
+			<field name="name">Configure Annual Leaves</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.annual.leave</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" eval="tree_hr_annual_leave_view"/>
+		</record>
+		
+		<menuitem name="Configure Annual Leaves" action="action_hr_annual_leave" id="menu_hr_annual_leave" parent="hr.menu_hr_configuration" sequence="10"/>
+	</data>
+</openerp>

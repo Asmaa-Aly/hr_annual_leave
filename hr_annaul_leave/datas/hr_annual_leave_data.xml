@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+		<!-- Annual leave -->
+		<record model="hr.holidays.status" id="holiday_status_annual_leave">
+			<field name="name">Annual Leave</field>
+			<field name="limit">True</field>
+			<field name="color_name">blue</field>
+		</record>
+	</data>
+</openerp>
