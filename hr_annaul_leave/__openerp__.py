@@ -19,7 +19,7 @@
 #
 ##############################################################################
 {
-	'name' : 'HR Annual Leave test',
+	'name' : 'HR Annual Leave',
 	'version' : '0.1',
 	'author' : 'Asmaa Aly',
 	'category' : 'Human Resources',
